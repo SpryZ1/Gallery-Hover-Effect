@@ -1,0 +1,77 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #000;
+}
+
+.container {
+    position: relative;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    gap: 20px;
+    width: 800px;
+    height: 500px;
+    background: #000;
+    transition: .55s;
+}
+
+.container .box {
+    position: relative;
+    background: var(--img) no-repeat;
+    background-size: cover;
+    background-position: center;
+    transition: .55s;
+    filter: grayscale(0) brightness(1);
+}
+
+.container:hover .box {
+    filter: grayscale(1)
+}
+
+.container .box:hover {
+    filter: grayscale(0) brightness(1.25);
+}
+
+.container .box::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(#000, transparent, transparent, #000);
+}
+
+.container .box:nth-child(odd) {
+    transform: translateY(-50px);
+}
+
+.container .box:nth-child(even) {
+    transform: translateY(50px);
+}
+
+.container:has(.one:hover) {
+    grid-template-columns: 2fr .5fr .5fr .5fr .5fr;
+}
+
+.container:has(.two:hover) {
+    grid-template-columns: .5fr 2fr .5fr .5fr .5fr;
+}
+
+.container:has(.three:hover) {
+    grid-template-columns: .5fr .5fr 2fr .5fr .5fr;
+}
+
+.container:has(.four:hover) {
+    grid-template-columns: .5fr .5fr .5fr 2fr .5fr;
+}
+
+.container:has(.five:hover) {
+    grid-template-columns: .5fr .5fr .5fr .5fr 2fr;
+}
